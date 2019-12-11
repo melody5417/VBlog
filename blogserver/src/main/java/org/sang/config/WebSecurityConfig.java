@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+    // 身份验证管理生成器
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(new PasswordEncoder() {
@@ -50,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         });
     }
 
+    // HTTP请求安全处理
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -80,6 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().permitAll().and().csrf().disable().exceptionHandling().accessDeniedHandler(getAccessDeniedHandler());
     }
 
+    // Web安全
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/blogimg/**","/index.html","/static/**");
