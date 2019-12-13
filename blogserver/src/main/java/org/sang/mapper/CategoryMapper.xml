@@ -6,6 +6,9 @@
     <select id="getAllCategories" resultType="org.sang.bean.Category">
         SELECT * FROM category
     </select>
+    <select id="getAllCateNames" resultType="java.lang.String">
+        SELECT cateName FROM vueblog2.category
+    </select>
     <delete id="deleteCategoryByIds">
         DELETE FROM category WHERE id IN
         <foreach collection="ids" separator="," open="(" close=")" item="id">

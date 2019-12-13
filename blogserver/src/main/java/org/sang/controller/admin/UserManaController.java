@@ -21,16 +21,19 @@ public class UserManaController {
     @Autowired
     UserService userService;
 
+    // 根据nickname获取用户
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public List<User> getUserByNickname(String nickname) {
         return userService.getUserByNickname(nickname);
     }
 
+    // 根据id获取用户
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
+    // 获取所有角色
     @RequestMapping(value = "/roles", method = RequestMethod.GET)
     public List<Role> getAllRole() {
         return userService.getAllRole();

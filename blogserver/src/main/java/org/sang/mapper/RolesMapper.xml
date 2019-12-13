@@ -12,4 +12,7 @@
     <select id="getRolesByUid" parameterType="long" resultType="org.sang.bean.Role">
         SELECT r.* FROM roles r,roles_user ru WHERE r.`id`=ru.`rid` AND ru.`uid`=#{uid}
     </select>
+    <select id="getAllRoles" resultType="org.sang.bean.Role">
+        SELECT * FROM vueblog2.roles;
+    </select>
 </mapper>

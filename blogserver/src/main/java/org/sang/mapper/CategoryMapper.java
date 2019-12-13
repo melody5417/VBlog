@@ -13,6 +13,8 @@ import java.util.List;
 public interface CategoryMapper {
     List<Category> getAllCategories();
 
+    List<String> getAllCateNames();
+
     int deleteCategoryByIds(@Param("ids") String[] ids);
 
     int updateCategoryById(Category category);

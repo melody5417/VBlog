@@ -38,7 +38,7 @@
         ORDER BY a.editTime DESC limit #{start},#{count};
     </select>
     <select id="getArticleByStateByAdmin" resultType="org.sang.bean.Article">
-        SELECT a.id,a.`title`,a.`editTime`,a.`pageView`,a.`state`,u.`nickname`,c.`cateName`,a.uid FROM article a,user
+        SELECT a.id,a.`publishDate`,a.`title`,a.`editTime`,a.`pageView`,a.`state`,u.`nickname`,c.`cateName`,a.uid FROM article a,user
         u,category c WHERE a.`cid`=c.`id` AND a.`uid`=u.`id` and a.state=1
         <if test="keywords!=null">
             AND title LIKE concat('%',#{keywords},'%')

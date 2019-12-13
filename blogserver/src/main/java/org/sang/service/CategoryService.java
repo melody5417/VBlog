@@ -22,6 +22,10 @@ public class CategoryService {
         return categoryMapper.getAllCategories();
     }
 
+    public List<String> getAllCateNames() {
+        return categoryMapper.getAllCateNames();
+    }
+
     public boolean deleteCategoryByIds(String ids) {
         String[] split = ids.split(",");
         int result = categoryMapper.deleteCategoryByIds(split);

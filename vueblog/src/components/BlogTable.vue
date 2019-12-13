@@ -26,7 +26,8 @@
       tooltip-effect="dark"
       style="width: 100%;overflow-x: hidden; overflow-y: hidden;"
       max-height="390"
-      @selection-change="handleSelectionChange" v-loading="loading">
+      @selection-change="handleSelectionChange"
+      v-loading="loading">
       <el-table-column
         type="selection"
         width="35" align="left" v-if="showEdit || showDelete">
@@ -36,6 +37,10 @@
         width="400" align="left">
         <template slot-scope="scope"><span style="color: #409eff;cursor: pointer" @click="itemClick(scope.row)">{{ scope.row.title}}</span>
         </template>
+      </el-table-column>
+      <el-table-column
+        label="创建时间" width="140" align="left">
+        <template slot-scope="scope">{{ scope.row.publishDate | formatDateTime}}</template>
       </el-table-column>
       <el-table-column
         label="最近编辑时间" width="140" align="left">
@@ -114,6 +119,9 @@
       })
     },
     methods: {
+        handleCellClick(val) {
+            console.log(val)
+        },
       searchClick(){
         this.loadBlogs(1, this.pageSize);
       },

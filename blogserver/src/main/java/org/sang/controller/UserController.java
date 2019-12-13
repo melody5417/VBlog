@@ -1,6 +1,7 @@
 package org.sang.controller;
 
 import org.sang.bean.RespBean;
+import org.sang.bean.Role;
 import org.sang.service.UserService;
 import org.sang.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class UserController {
     @RequestMapping("/currentUserName")
     public String currentUserName() {
         return Util.getCurrentUser().getNickname();
+    }
+
+    @RequestMapping("/allRoles")
+    public List<Role> getAllRole() {
+        return userService.getAllRole();
     }
 
     @RequestMapping("/currentUserId")
