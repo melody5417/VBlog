@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by sang on 2017/12/17.
  */
+// 自己创建一个类实现 UserDetails， 方便我们赋值我们查到的角色合集。
 public class User implements UserDetails {
     private Long id;
     private String username;

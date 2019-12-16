@@ -30,9 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
-    // 身份验证管理生成器
+    // 主要配置身份认证来源，也就是用户及其角色。
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // UserDetails 中包含用户的用户名，密码，角色等信息。
         auth.userDetailsService(userService).passwordEncoder(new PasswordEncoder() {
             @Override
             public String encode(CharSequence charSequence) {
@@ -51,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         });
     }
 
-    // HTTP请求安全处理
+    // HTTP请求安全处理 主要配置路径，也就是资源的访问权限（是否需要认证，需要什么角色等。）
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -88,6 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/blogimg/**","/index.html","/static/**");
     }
 
+    // 权限不足
     @Bean
     AccessDeniedHandler getAccessDeniedHandler() {
         return new AuthenticationAccessDeniedHandler();

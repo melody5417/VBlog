@@ -20,6 +20,7 @@ import java.util.List;
  */
 @Service
 @Transactional
+// UserDetailsService 提供用户和对应的角色
 public class UserService implements UserDetailsService {
     @Autowired
     UserMapper userMapper;
